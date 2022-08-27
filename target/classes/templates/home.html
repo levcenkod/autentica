@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="stylesheet" href="css/home.css">
+    <title>Home page</title>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-text">Product order</div>
+    <div th:inline="text" class="header-text" id="role">Hello, [[${#httpServletRequest.remoteUser}]]!</div>
+    <div class="button-orders">
+        <button id="button-order-list">Order list</button>
+    </div>
+    <div class="button-save">
+        <input type="submit" form="product_form" value="Save" id="button-save-order">
+    </div>
+    <div class="button-cancel">
+        <button id="button-cancel-order">Cancel</button>
+    </div>
+    <div class="button-sign-out">
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" value="Sign Out">Sign Out</button>
+        </form>
+    </div>
+
+</header>
+
+<main id="main-container">
+
+    <form method="POST" th:action="addOrder" id="product_form">
+        <div>
+            <label for="tableNum">Worker table number:</label>
+            <input type="number" id="tableNum" name="tableNum">
+        </div>
+        <br>
+
+        <div>
+            <label for="workerName">Worker Name:</label>
+            <input type="text" id="workerName" name="workerName">
+        </div>
+        <br>
+
+        <div>
+            <label for="explanation">Explanation:</label>
+            <input type="text" id="explanation" name="explanation">
+        </div>
+        <br>
+
+        <div>
+            <label for="productType">Product type:</label>
+            <select name="productType" id="productType">
+                <option value="headphones">Headphones</option>
+                <option value="headset">Headset</option>
+                <option value="microphone">Microphone</option>
+                <option value="monitor">Monitor</option>
+                <option value="keyboard">Keyboard</option>
+                <option value="mouse">Mouse</option>
+            </select>
+        </div>
+        <br>
+
+
+        <div id="attribute-form">
+            <div id="headphones-block">
+                <input type="radio" id="inEar" name="headphonesType" value="inEar">
+                <label for="inEar">In-ear</label>
+                <br>
+                <input type="radio" id="withEarPad" name="headphonesType" value="withEarPad">
+                <label for="withEarPad">With ear pad</label>
+                <br>
+                <p>Please provide type of headphones</p>
+            </div>
+            <div id="headset-block">
+                <input type="radio" id="builtInMicrophone" name="headsetType" value="builtInMicrophone">
+                <label for="builtInMicrophone">Built-in microphone</label>
+                <br>
+                <input type="radio" id="externalMicrophone" name="headsetType" value="externalMicrophone">
+                <label for="externalMicrophone">External microphone</label>
+                <br>
+                <p>Please provide type of headset</p>
+            </div>
+            <div id="microphone-block">
+                <input type="radio" id="desktopMicrophone" name="microphoneType" value="desktopMicrophone">
+                <label for="desktopMicrophone">Desktop microphone</label>
+                <br>
+                <input type="radio" id="lavaliereMicrophone" name="microphoneType" value="lavaliereMicrophone">
+                <label for="lavaliereMicrophone">Lavaliere microphone</label>
+                <br>
+                <p>Please provide type of microphone</p>
+            </div>
+            <div id="monitor-block">
+                <label for="monitorSize">Minimal size (Inches):</label>
+                <input type="number" id="monitorSize" name="monitorSize">
+                <br>
+                <p>Please provide monitor minimal size in inches</p>
+            </div>
+            <div id="keyboard-block">
+                <label for="keyboardHeight">Height (CM):</label>
+                <input type="number" id="keyboardHeight" name="keyboardHeight">
+                <br>
+                <label for="keyboardWidth">Width (CM):</label>
+                <input type="number" id="keyboardWidth" name="keyboardWidth">
+                <br>
+                <label for="keyboardLength">Length (CM):</label>
+                <input type="number" id="keyboardLength" name="keyboardLength">
+                <br>
+                <p>Please provide dimensions in HxWxL format</p>
+            </div>
+            <div id="mouse-block">
+                <label for="mouseWeight">Weight (KG):</label>
+                <input type="number" id="mouseWeight" name="mouseWeight">
+                <br>
+                <p>Please provide mouse weight in KG</p>
+            </div>
+        </div>
+
+
+    </form>
+
+</main>
+
+<footer th:insert="blocks/footer.html :: thFooter" class="footer"></footer>
+
+<script src="js/home.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <link rel="stylesheet" href="css/login.css">
+  <title>Login </title>
+</head>
+
+
+<body>
+
+<header class="header">
+  <div class="header-text">Login</div>
+  <div th:inline="text" class="header-text">Hello [[${#httpServletRequest.remoteUser}]]!</div>
+</header>
+
+
+<main id="main-container">
+
+<div th:if="${param.error}">
+  Invalid username and password.
+</div>
+<div th:if="${param.logout}">
+  You have been logged out.
+</div>
+<form th:action="@{/login}" method="post">
+  <div><label> User Name : <input type="text" name="username"/> </label></div>
+  <div><label> Password: <input type="password" name="password"/> </label></div>
+  <div><input type="submit" value="Sign In"/></div>
+</form>
+
+</main>
+
+
+<footer th:insert="blocks/footer.html :: thFooter" class="footer"></footer>
+</body>
+</html>

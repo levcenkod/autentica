@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<link rel="stylesheet" href="../css/order-details.css">
+
+
+<head>
+  <title>Order details</title>
+</head>
+
+<body>
+
+<header th:each ="el: ${order}" class="header">
+  <div class="header-text">Order details</div>
+  <div class="button-complete">
+    <form th:action="'/order/' + ${el.id} + '/completeOrder'" method="post">
+      <button type="submit" id="button-order-completed">Mark as completed</button>
+    </form>
+  </div>
+  <div class="button-delete" id="button-delete-order">
+    <form th:action="'/order/' + ${el.id} + '/deleteOrder'" method="post">
+    <button>Delete</button>
+    </form>
+  </div>
+  <div class="button-return" id="button-go-back">
+    <button>Go back</button>
+  </div>
+</header>
+
+<main id="main-container">
+
+  <ul>
+    <li th:each ="el: ${order}" class="order-container">
+      <span  th:text = "'Order id: ' + ${el.id}" class="order-element-label"/>
+      <span  th:text = "'Table number: ' + ${el.tableNumber}" class="order-element-label"/>
+      <span  th:text = "'Worker name: ' + ${el.workerName}" class="order-element-label"/>
+      <span  th:text = "'Explanation: ' + ${el.explanation}" class="order-element-label"/>
+      <span  th:text = "'Product: ' + ${el.product.name}" class="order-element-label"/>
+      <span  th:text = "${el.attr.attrType} + ': ' + ${el.attr.attrValue} + ' ' + ${el.attr.attrUnit}" class="order-element-label"/>
+      <span  th:text = "'Creation date: ' + ${el.creationDate}" class="order-element-label"/>
+      <span  th:text = "'Status: ' + ${el.orderStatus}" class="order-element-label"/>
+    </li>
+  </ul>
+
+
+</main>
+
+<footer class="footer">
+  <div class="footer-text">Autentica Test Assignment</div>
+</footer>
+
+</body>
+<script src="../js/order-details.js"></script>
+</html>

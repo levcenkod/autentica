@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<link rel="stylesheet" href="css/orders.css">
+
+
+<head>
+    <title>Orders list</title>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-text">Orders list</div>
+    <div class="button-return" id="button-go-back">
+        <button>Go back</button>
+    </div>
+</header>
+
+<main id="products">
+    <ul class="product-container">
+        <li th:each="el : ${orders}" class="product-element">
+            <span  th:text = "'Order id: ' + ${el.id}" class="product-element-label"/>
+            <span  th:text = "'Product: ' + ${el.product.name}" class="product-element-label"/>
+            <span  th:text = "${el.attr.attrType} + ': ' + ${el.attr.attrValue} + ' ' + ${el.attr.attrUnit}" class="product-element-label"/>
+            <span  th:text = "'Creation date: ' + ${el.creationDate}" class="product-element-label"/>
+            <span  th:text = "'Status: ' + ${el.orderStatus}" class="product-element-label"/>
+            <a  th:href = "'/order/' + ${el.id}" class="product-element-label">Details</a>
+        </li>
+    </ul>
+</main>
+
+<footer class="footer">
+    <div class="footer-text">Autentica Test Assignment</div>
+</footer>
+
+</body>
+<script src="../js/orders.js"></script>
+</html>
+

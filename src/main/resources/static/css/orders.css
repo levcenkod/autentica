@@ -1,0 +1,90 @@
+#products{
+    min-height: calc(100vh - 250px);
+}
+.header {
+    display: flex;
+    align-items: flex-end;
+    border-style: none none solid none;
+    padding: 10px;
+    margin: 1% 2% 2% 2%;
+}
+.header-text {
+    flex: 6;
+    order: 1;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 36px;
+    color: #111;
+}
+button {
+    background-color: #e2e4e2; 
+    border-style: outset;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: #111;
+    padding: 8px 24px;
+    font-size: 20px;
+    margin: 0px 5px 0px 0px;
+    white-space: nowrap;
+  }
+.button-return {
+    flex: 1;
+    order: 2;
+}
+
+/* main style */
+#main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    width: 50%;
+    max-width: 30%;
+    padding: 20px 15px 40px 15px;
+    min-height: calc(100vh - 325px);
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 22px;
+    color: #111;
+    margin: 1% 2% 2% 2%;
+}
+
+/* product style */
+
+.product-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    
+    grid-gap: 45px;
+    width: 90%;
+    max-width: 90%;
+    margin: auto;
+}
+.product-element{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: center;
+    border-style: solid;
+    padding: 20px 15px 40px 15px;
+}
+.product-element-label{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: #111;
+    font-size: 20px;
+}
+
+/* footer style */
+
+.footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border-style: solid none none none;
+    padding: 10px;
+    margin: 1% 2% 2% 2%;
+}
+.footer-text {
+    text-align: center;
+    flex: 1;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 24px;
+    color: #111;
+}
